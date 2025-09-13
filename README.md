@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Secure File Transmission Project
 
 A secure file sharing system using Flask, SQLAlchemy, encryption, and blockchain logging.
