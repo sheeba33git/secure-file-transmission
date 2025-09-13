@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Blockchain Logs - Secure File Transmission{% endblock %}
+{% block content %}
+<div class="card" style="max-width:860px;">
+  <h2><i class="fas fa-chain tech-icons"></i> Blockchain Logs</h2>
+  <ul>
+    {% for block in chain %}
+      <li>
+        <b>Index:</b> {{ block.index }},
+        <b>Time:</b> {{ block.timestamp }},
+        <b>Data:</b> {{ block.data }},
+        <b>Hash:</b> {{ block.hash[:8] }}...
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{{ url_for('dashboard') }}" style="background:#3aaed8; color:#fff; padding:9px 16px; border-radius:5px; font-weight:bold; text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+</div>
+{% endblock %}

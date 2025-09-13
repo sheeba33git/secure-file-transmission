@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Secure File Transmission{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+      body {
+          font-family: 'Segoe UI', Arial, sans-serif;
+          background: linear-gradient(135deg, #232526 0%, #414345 100%);
+          color: #fff;
+          margin: 0;
+      }
+      .light-mode { background:#f7fbff; color: #232526; }
+      .navbar {
+          display: flex; justify-content: space-between; align-items: center; padding: 1em 2em; background: #262e49;
+      }
+      .navbar .logo { font-size: 1.6em; font-weight: bold; }
+      .navbar .right { display: flex;gap: 1em; }
+      .toggle-btn { cursor: pointer;background: none;border: none; font-size: 1.3em; }
+      .card { background: #373e56; padding: 2em; margin: 2em auto; border-radius: 12px; max-width: 500px; }
+      .card input, .card select { width:100%; margin-bottom:16px;padding:10px;border-radius:4px;border:none;font-size:1em;}
+      .card button { width:100%; padding:10px; border-radius:5px;border:none; background: #3aaed8;color:#fff;font-size:1.1em;cursor:pointer; }
+      .tech-icons {font-size:1.6em; color:#3aaed8; margin-right:8px;}
+      .feature-row { display:flex; justify-content:space-between; gap:2em;}
+      .feature-card { background:#323c53; flex:1; padding:1.2em;border-radius:8px; margin:1em 0; text-align:center; }
+      .upload-area {border:2px dashed #3aaed8; border-radius:10px; padding:2em;text-align:center; margin-bottom:1em; transition:background 0.3s;}
+      .upload-area.dragover { background:#272b35; }
+    </style>
+    {% block style %}{% endblock %}
+</head>
+<body class="" id="mainBody">
+  <div class="navbar">
+      <span class="logo"><i class="fas fa-shield-alt tech-icons"></i> Secure File Transmission</span>
+      <div class="right">
+        {% if session.get('username') %}
+        <span><i class="fas fa-user"></i> {{session['username']}}</span>
+        {% endif %}
+        <button class="toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light">
+            <i class="fas fa-moon"></i> / <i class="fas fa-sun"></i>
+        </button>
+        {% if session.get('username') %}
+          <a href="{{ url_for('logout') }}" style="color:#eee;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        {% endif %}
+      </div>
+  </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li class="flash {{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+
+  <script>
+    function toggleTheme() {
+      let body = document.getElementById('mainBody');
+      body.classList.toggle('light-mode');
+    }
+    document.querySelectorAll('.upload-area').forEach(area => {
+      area.addEventListener('dragover', e=> {e.preventDefault(); area.classList.add('dragover')});
+      area.addEventListener('dragleave', e=> {area.classList.remove('dragover')});
+      area.addEventListener('drop', e=> {area.classList.remove('dragover')});
+    });
+  </script>
+</body>
+</html>

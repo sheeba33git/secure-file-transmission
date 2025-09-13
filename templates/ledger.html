@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Ledger Details - Secure File Transmission{% endblock %}
+{% block content %}
+<div class="card" style="max-width: 650px;">
+  <h2><i class="fas fa-book tech-icons"></i> Ledger Details</h2>
+  <p>This page can show a detailed history or a visual block representation of transactions/events in your blockchain ledger.<br>
+  You may customize/expand the content below based on your backend implementation.</p>
+  <table style="width:100%;margin-top:1em;">
+    <tr style="background:#232e47;">
+      <th>Block Index</th>
+      <th>Timestamp</th>
+      <th>Event Data</th>
+      <th>Hash (short)</th>
+    </tr>
+    {% for block in chain %}
+      <tr>
+        <td>{{ block.index }}</td>
+        <td>{{ block.timestamp }}</td>
+        <td>{{ block.data }}</td>
+        <td>{{ block.hash[:8] }}...</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ url_for('dashboard') }}"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+</div>
+{% endblock %}

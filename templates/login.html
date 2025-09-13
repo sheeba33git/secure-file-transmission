@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Login - Secure File Transmission{% endblock %}
+{% block content %}
+<div class="card" style="max-width: 340px; margin-top:60px;">
+  <h2><i class="fas fa-lock tech-icons"></i> Secure Login</h2>
+  <form method="post">
+    <input name="username" placeholder="Enter Username" required>
+    <input type="password" name="password" placeholder="Enter Password" required>
+    <button type="submit"><i class="fas fa-arrow-right"></i> Login</button>
+  </form>
+  <p style="text-align:center;font-size:0.97em;">
+    <a href="{{ url_for('register') }}" style="color:#ffeb3b; font-weight:bold; text-decoration:underline;">
+      <i class="fas fa-user-plus"></i> Don't have an account? Register here
+    </a>
+  </p>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+Excellent! Now that you can see all UI features (including "View Blockchain Logs") and your file upload is working, here’s a checklist to ensure your Secure File Transmission project is fully functional and interview-ready.
+
+Final Functionality Checklist
+1. Registration and Login
+Can a new user successfully register?
+
+Can both “user” and “admin” roles be registered and logged in?
+
+Does the site block login with wrong credentials?
+
+2. Dashboard and Upload
+After login, does the dashboard display the welcome message and secure file features?
+
+Can users choose and upload files?
+
+Do successfully uploaded files show up instantly in the “Your Files” table?
+
+Does the table show the correct Uploader and Timestamp?
+
+3. Download Feature
+Can users download files they have uploaded?
+
+If you log in as a different user, do they only see/download their own files? (Unless "admin", which should see all.)
+
+4. Role-based Access
+Does an admin account see all files and the Blockchain Logs link?
+
+Does a regular user see only their uploads, and (if coded) never see the Blockchain Logs link?
+
+5. Blockchain Logging
+Click “View Blockchain Logs.” Does it display a readable, recent log of file upload/download events?
+
+Are new actions (uploads/downloads) added as new blocks to the chain?
+
+6. Error Handling
+Try wrong inputs, forbidden routes, or uploading without a file—do you see your professional error pages (404, 500, etc.)?
+
+Are all error links/buttons and navigation clearly visible?
+
+7. UI Consistency
+All navigation (“Back to Home”, “View Blockchain Logs”, and “Go to My Files”) is visible and styled.
+
+Font Awesome icons render correctly.
+
+Register/Login navigation is clear and works from both forms.
+
+Optional Nice-to-Have Checks
+Test resizing your browser: Is the interface still readable? (Mobile-friendly is a bonus!)
+
+Try to upload the same file twice: Does your app handle this gracefully?
+
+Check your uploads/ directory: Are your files safely saved there?
+
+Try logging in as BOTH admin and user to confirm permissions.
+
+Logout and try protected routes: Do you get redirected to login?
+
+If all these features work as intended, your project is not only working but ready to impress in interviews or demonstrations!
+If you run into a problem with any specific step or want to upgrade/add a feature, just ask!

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Error - Secure File Transmission{% endblock %}
+{% block content %}
+<div class="card" style="max-width:350px;text-align:center;">
+  <h2 style="color:#de5e5e;"><i class="fas fa-exclamation-circle tech-icons"></i> Error</h2>
+  <p>An unexpected error occurred.<br>Please try again or contact support if the issue persists.</p>
+  <a href="{{ url_for('dashboard') }}"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+{% endblock %}

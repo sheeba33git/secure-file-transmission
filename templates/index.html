@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Secure File Transmission{% endblock %}
+{% block content %}
+<div class="card" style="max-width:860px;">
+  <h2><i class="fas fa-database tech-icons"></i> Welcome to Secure File Transmission System</h2>
+  <div class="feature-row">
+      <div class="feature-card"><i class="fas fa-lock tech-icons"></i><br><b>Encryption</b><br>Your files are hashed on upload.</div>
+      <div class="feature-card"><i class="fas fa-user-cog tech-icons"></i><br><b>Role-based Access</b><br>Admins/users have individual permissions.</div>
+      <div class="feature-card"><i class="fas fa-chain tech-icons"></i><br><b>Blockchain Logs</b><br>Every upload/download is recorded on-chain.</div>
+  </div>
+  <form class="upload-area" method="post" enctype="multipart/form-data" action="{{ url_for('upload') }}">
+      <i class="fa fa-cloud-upload-alt" style="font-size:2em;color:#3aaed8"></i>
+      <div>Drag & Drop a file here or <input type="file" name="file" required style="display:inline" onchange="this.form.submit()"> click to select and upload.</div>
+      <button type="submit" style="margin-top:1em;"><i class="fas fa-upload"></i> Upload File</button>
+  </form>
+  <h3>Your Files</h3>
+  <table style="width:100%;border-collapse:collapse;">
+    <tr style="background:#232e47;"><th>File Name</th><th>Uploaded By</th><th>Timestamp</th><th>Action</th></tr>
+    {% for file in files %}
+    <tr>
+      <td>{{ file.filename }}</td>
+      <td>{{ file.uploaded_by }}</td>
+      <td>{{ file.timestamp }}</td>
+      <td>
+        <a href="{{ url_for('download', file_id=file.id) }}"><i class="fas fa-download"></i></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% if role == 'admin' %}
+  <a href="{{ url_for('logs') }}"
+   style="display:inline-block; background:#ffeb3b; color:#23293a; padding:13px 26px; border-radius:7px; font-weight:bold; text-decoration:none; margin-top:18px; font-size:1.06em;">
+   <i class="fas fa-link"></i> View Blockchain Logs
+</a>  
+{% endif %}
+</div>
+{% endblock %}

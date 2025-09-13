@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="max-width:350px; margin:auto;">
+  <h2 style="color:#58ce7b;">
+    <i class="fas fa-check-circle tech-icons"></i> Success!
+  </h2>
+  <p>Your file has been uploaded, hashed and chained securely.</p>
+  <a href="{{ url_for('dashboard') }}"
+     style="display:inline-block; margin:18px 0 0 0; background:#3aaed8; color:#fff; padding:13px 26px; border-radius:7px; font-weight:bold; text-decoration:none; font-size:1.08em;">
+    <i class="fas fa-folder-open"></i> Go to My Files
+  </a>
+</div>
+{% endblock %}

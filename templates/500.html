@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="text-align:center;max-width:400px;">
+  <h1>
+    <i class="fas fa-bug tech-icons" style="color:#de5e5e;"></i> 500
+  </h1>
+  <p>Internal Server Error</p>
+  <a href="{{ url_for('dashboard') }}" style="color:#ffeb3b; font-weight:bold; text-decoration:underline; display:inline-block; margin-top:16px; font-size:1.05em;">
+    <i class="fas fa-arrow-left"></i> Back to Home
+  </a>
+</div>
+{% endblock %}
